@@ -5,7 +5,7 @@ require "verbose-shell/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "verbose-shell"
-  spec.version       = Verbose::Shell::VERSION
+  spec.version       = VerboseShell::VERSION
   spec.authors       = ["David Caldwell"]
   spec.email         = ["david@porkrind.org"]
 

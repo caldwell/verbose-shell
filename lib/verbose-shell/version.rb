@@ -1,5 +1,3 @@
-module Verbose
-  module Shell
-    VERSION = "0.1.0"
-  end
+module VerboseShell
+    VERSION = "0.1.1"
 end
