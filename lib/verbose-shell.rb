@@ -32,7 +32,8 @@ class VerboseShell
       if @verbose > 0
         Kernel.system *args or raise ShellError.new('', args, $?.exitstatus).message.lstrip
       else
-        output = IO.popen(args + [{:err => [:child, :out]}]) {|io| io.read}
+        args, opts = args.last.is_a?(Hash) ? [args[0..-2], args.last] : [args, {}]
+        output = IO.popen(args, opts.merge({:err => [:child, :out]})) {|io| io.read}
         raise ShellError.new(output, args, $?.exitstatus) if $? != 0
       end
     end
