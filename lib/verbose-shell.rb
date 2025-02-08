@@ -77,6 +77,9 @@ class VerboseShell
     def chown_R_formatter(method, user, group, file)
       chown_formatter(method, user, group, file)
     end
+    def mkdir_p_formatter(method, file)
+      method_to_a(method) + (file.is_a?(Array) ? file : [file])
+    end
 
     def method_missing(method, *args, &block)
       system_trace *(self.respond_to?("#{method}_formatter") ? self.send("#{method}_formatter", method, *args)
