@@ -79,8 +79,8 @@ class VerboseShell
     end
 
     def method_missing(method, *args, &block)
-      system_trace self.respond_to?("#{method}_formatter") ? self.send("#{method}_formatter", method, *args)
-                   : method_to_a(method) + args
+      system_trace *(self.respond_to?("#{method}_formatter") ? self.send("#{method}_formatter", method, *args)
+                   : method_to_a(method) + args)
       FileUtils.send(method, *args, &block)
     end
   end
